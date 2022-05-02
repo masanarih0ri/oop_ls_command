@@ -1,11 +1,14 @@
 require_relative 'params'
+require_relative 'ls_file'
 
 class Ls
   def main
     # 起動時引数を受け取る
     params = Params.new(ARGV)
     # ファイルの一覧を取得する
-    # @ls_files = LsFile.all(parmas)
+    @ls_files = LsFile.all(params)
+
+    puts @ls_files
     # ファイルの一覧をviewに表示
     # if params.long_format?
     #   render 'long'
