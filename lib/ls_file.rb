@@ -22,6 +22,10 @@ class LsFile
     @pathname.basename.to_s
   end
 
+  def block_size
+    file_stat.blocks
+  end
+
   def file_type
     file_stat.ftype
   end

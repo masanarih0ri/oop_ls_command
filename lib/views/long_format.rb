@@ -20,8 +20,10 @@ module Views
     end
 
     def format
+      total = @ls_files.sum(&:block_size)
+      header = "total #{total}"
       max_size_table = generate_max_size_table
-      @ls_files.map do |ls_file|
+      body = @ls_files.map do |ls_file|
         column = []
         column << format_mode(ls_file) + ' '
         column << ls_file.link_count.to_s.rjust(max_size_table[:link_count])
@@ -31,7 +33,8 @@ module Views
         column << ls_file.mtime.strftime('%b %d %H:%M')
         column << ls_file.name
         column.join(' ')
-      end.join("\n")
+      end
+      [header, *body].join("\n")
     end
 
     private
