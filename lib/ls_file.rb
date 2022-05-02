@@ -1,3 +1,4 @@
+require 'etc'
 require 'pathname'
 
 class LsFile
@@ -21,7 +22,41 @@ class LsFile
     @pathname.basename.to_s
   end
 
+  def file_type
+    file_stat.ftype
+  end
+
+  def permission
+    file_stat.mode.to_s(8)[-3..-1]
+  end
+
+  def link_count
+    @pathname.directory? ? @pathname.entries.size : 1
+  end
+
+  def owner_name
+    Etc.getpwuid(file_stat.uid).name
+  end
+
+  def group_name
+    Etc.getgrgid(file_stat.gid).name
+  end
+
+  def bytesize
+    @pathname.size
+  end
+
+  def mtime
+    file_stat.mtime
+  end
+
   def to_s
     name
+  end
+
+  private
+
+  def file_stat
+    @pathname.stat
   end
 end

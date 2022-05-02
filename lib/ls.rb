@@ -1,6 +1,7 @@
 require_relative 'params'
 require_relative 'ls_file'
 require_relative 'views/short_format'
+require_relative 'views/long_format'
 
 class Ls
   def main
@@ -10,7 +11,7 @@ class Ls
     ls_files = LsFile.all(params)
     # ファイルの一覧をviewに表示
     if params.long_format?
-      render 'long'
+      puts Views::LongFormat.new(ls_files).format
     else
       puts Views::ShortFormat.new(ls_files).format
     end
