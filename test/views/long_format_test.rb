@@ -16,7 +16,7 @@ module Views
       expected = <<~TEXT.chomp
         total 80
         drwxr-xr-x  15 m-hori  staff   480 May 02 09:44 .
-        drwxr-xr-x   4 m-hori  staff   128 May 03 16:29 ..
+        drwxr-xr-x   4 m-hori  staff   128 May 03 17:15 ..
         -rw-r--r--   1 m-hori  staff   740 Apr 23 07:11 application.rb
         -rw-r--r--   1 m-hori  staff   207 Apr 23 07:11 boot.rb
         -rw-r--r--   1 m-hori  staff   193 Apr 23 07:11 cable.yml
