@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Views
   class ShortFormat
     COLUMN_COUNT = 3

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'params'
 require_relative 'ls_file'
 require_relative 'views/short_format'

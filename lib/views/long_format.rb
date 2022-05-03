@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Views
   class LongFormat
     FILE_TYPE_TABLE = {
@@ -25,10 +27,10 @@ module Views
       max_size_table = generate_max_size_table
       body = @ls_files.map do |ls_file|
         column = []
-        column << format_mode(ls_file) + ' '
+        column << "#{format_mode(ls_file)} "
         column << ls_file.link_count.to_s.rjust(max_size_table[:link_count])
-        column << ls_file.owner_name.ljust(max_size_table[:owner_name]) + ' '
-        column << ls_file.group_name.ljust(max_size_table[:group_name]) + ' '
+        column << "#{ls_file.owner_name.ljust(max_size_table[:owner_name])} "
+        column << "#{ls_file.group_name.ljust(max_size_table[:group_name])} "
         column << ls_file.bytesize.to_s.rjust(max_size_table[:bytesize])
         column << ls_file.mtime.strftime('%b %d %H:%M')
         column << ls_file.name

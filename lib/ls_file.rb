@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'etc'
 require 'pathname'
 
@@ -7,11 +9,9 @@ class LsFile
     # patternという名前は思いつかないというか、ここにpatternが渡るというのがイメージできなかった
     flags = params.dot_match? ? [File::FNM_DOTMATCH] : []
     paths = Dir.glob(pattern, *flags)
-    if params.dot_match?
-      paths << File.join(params.target_directory, '..')
-    end
+    paths << File.join(params.target_directory, '..') if params.dot_match?
     sorted_paths = params.reverse? ? paths.sort.reverse : paths.sort
-    sorted_paths.map { |path| LsFile.new(path)}
+    sorted_paths.map { |path| LsFile.new(path) }
   end
 
   def initialize(path)
@@ -31,7 +31,7 @@ class LsFile
   end
 
   def permission
-    file_stat.mode.to_s(8)[-3..-1]
+    file_stat.mode.to_s(8)[-3..]
   end
 
   def link_count

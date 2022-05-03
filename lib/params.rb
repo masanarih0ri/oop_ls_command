@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'optparse'
 
 class Params
@@ -19,11 +21,11 @@ class Params
   end
 
   def reverse?
-    !! @params[:r]
+    !!@params[:r]
   end
 
   def long_format?
-    !! @params[:l]
+    !!@params[:l]
   end
 
   def target_directory
