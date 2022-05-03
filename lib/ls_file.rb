@@ -6,7 +6,6 @@ require 'pathname'
 class LsFile
   def self.all(params)
     pattern = File.join(params.target_directory, '*')
-    # patternという名前は思いつかないというか、ここにpatternが渡るというのがイメージできなかった
     flags = params.dot_match? ? [File::FNM_DOTMATCH] : []
     paths = Dir.glob(pattern, *flags)
     paths << File.join(params.target_directory, '..') if params.dot_match?
