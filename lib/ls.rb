@@ -19,5 +19,3 @@ class Ls
     end
   end
 end
-
-Ls.new.main
